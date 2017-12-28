@@ -195,6 +195,38 @@ def rec_mystery_2(n)
   rec_mystery_2(n/5) + 1
 end
 ```
-The time complexity for this function is dependent on how large the integer `n` is, but since we are also dividing by 5 each recursive call, we are decreasing the number of times the function will be called by a factor of 5, which leads to this having O(log n) time complexity. The space complexity of this function is constant, since there is no additional memory being allocated to run this function. 
+The time complexity for this function is dependent on how large the integer `n` is, but since we are also dividing by 5 each recursive call, we are decreasing the number of times the function will be called by a factor of 5, which leads to this having O(log n) time complexity. The space complexity of this function is constant, since there is no additional memory being allocated to run this function. * Note that I did some research to figure this one out. 
+
+3. 
+``` 
+void rec_mystery_3(int n, int m, int o)
+{
+  if (n <= 0)
+  {
+    printf("%d, %d\n", m, o);
+  }
+  else
+  {
+    rec_mystery_3(n-1, m+1, o);
+    rec_mystery_3(n-1, m, o+1);
+  }
+}
+```
+
+I wasn't sure where to start with this one, other than the fact that the time complexity is dependent on the size of the argument `n`. After researching, the time complexity of this function is O(2 ^ n), since it calls itself recursively twice. The space complexity remains constant, since no additional memory is allocated to run this function.
+
+4. 
+
+``` ruby 
+class Array
+  def grab_bag
+    return [[]] if empty?
+    bag = take(count - 1).grab_bag
+    bag.concat(bag.map { |handful| handful + [last] })
+  end
+end
+```
+
+The time complexity of this method is dependent on the size of the array it is called on. It makes a recursive call, then concatenates the results of mapping over the variable `bag`. I'm not sure about this one, or how to explain what I'm thinking in a coherent way, but I think this is O(n^2), since in the recursive call, it will continue to call itselt recursively, then will iterate over the new array `bag` in each recursive call. As for space complexity, I think it will be O(n), since each recursive call assigns the variable `bag`, and the size is going to be dependend on the size of the array it's called on, but there is also another array created and returned in each `.map` call. 
  
  
