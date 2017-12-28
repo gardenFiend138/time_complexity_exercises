@@ -1,0 +1,19 @@
+# Time Complexity Practice
+
+1. Specify which aspect (or aspects) of the input the time complexity depends on. E.g., if a function is O(n), what is n?
+2. Explain thoroughly and clearly why the time complexity is what it is.
+3. Find the worst cases.
+4. Discuss space complexity too: this is usually deemphasized over time complexity, but some interviewers will ask about it.
+
+--- 
+
+1. ```ruby 
+def add(a, b)
+  if a > b
+    return a + b
+  end
+
+  a - b
+end
+```
+* 
