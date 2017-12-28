@@ -71,7 +71,7 @@ def print_arr_4(arr)
 end
 ```
 
- This method calls `.each` twice, so my initial thought it O(n), since the iterations are not nested within each other. The first call will at best be O(1), since the first element in the array may cause that block to break out early, and at it's worst would be O(n), since the element that is equivalen to n/2 - 1 may not be present in the array. For the second loop, the run time is O(n), since it will iterate over the whole array, but only print out elements if their index is evenly divisible by three. The final call in the method is to print the last element of the array, and since indexing into arrays and printing is constant, the final line is O(1) as well.  The overall time complexity for this method is: 2n + 1, which reduces to O(n) once we ignore the constants. The space complexity for this method is constant as well, since there are always 4 variables created and reassigned (including the indexing variable created under the hood for `.each`). 
+ This method calls `.each` twice, so my initial thought it O(n), since the iterations are not nested within each other. The first call will at best be O(1), since the first element in the array may cause that block to break out early, and at it's worst would be O(n), since the element that is equivalent to n/2 - 1 may not be present in the array. For the second loop, the run time is O(n), since it will iterate over the whole array, but only print out elements if their index is evenly divisible by three. The final call in the method is to print the last element of the array, and since indexing into arrays and printing is constant, the final line is O(1) as well.  The overall time complexity for this method is: 2n + 1, which reduces to O(n) once we ignore the constants. The space complexity for this method is constant as well, since there are always 4 variables created and reassigned (including the indexing variable created under the hood for `.each`). 
 
 6. 
 ```ruby 
@@ -82,7 +82,7 @@ def search(arr, target)
 end
 ``` 
 
- The time complexity of this method is dependent on the size of the array. In the best case scanario, the run time is O(1), since the first element in the array may be the target, which would cause the return statement to evaluate as true. At worst, the element could not exist in the array, or could be the last element, which would lead to O(n), since the entire array would have to be iterated over regardless. The space complexity of this is O(1), since two local variables are created, `el` and `idx`. 
+ The time complexity of this method is dependent on the size of the array. In the best case scenario, the run time is O(1), since the first element in the array may be the target, which would cause the return statement to evaluate as true. At worst, the element could not exist in the array, or could be the last element, which would lead to O(n), since the entire array would have to be iterated over regardless. The space complexity of this is O(1), since two local variables are created, `el` and `idx`. 
 
 7. 
 ```ruby 
@@ -130,7 +130,7 @@ let iterative_1 = (n, m) => {
 }
 ```
 
- The time complexity of this funciton is dependent on the arguments, since the number of iterations is dependent on the arguments. This leads to a time complexity of O(n  m), since for each iteration `n`, `m` iterations are made in the inner loop. The print statement runs in constant time, so we can ignore that. For space complexity, we assign 4 local variables, which is a fixed amount, and means that the space complexity is constant. 
+ The time complexity of this function is dependent on the arguments, since the number of iterations is dependent on the arguments. This leads to a time complexity of O(n  m), since for each iteration `n`, `m` iterations are made in the inner loop. The print statement runs in constant time, so we can ignore that. For space complexity, we assign 4 local variables, which is a fixed amount, and means that the space complexity is constant. 
 
 2. 
 ```javascript 
@@ -146,7 +146,7 @@ let iterative_2 = (n) => {
 }
 ```
 
- This function is similar to the previous one, execpt for the fact that instead of incrementing `j`, we decrement it, and it only takes one argument. If we say that `n = 5`, then the outer loop would run 5, or `n` times, and the inner loop would run 0 times, then once, then twice, then three times, etc, until it has run 5 times. Since the inner loop will still eventually be O(n), the overall time complexity of this function is O(n^2). The space complexity is the same as the above function, O(1), for the same reasons as stated above. 
+ This function is similar to the previous one, except for the fact that instead of incrementing `j`, we decrement it, and it only takes one argument. If we say that `n = 5`, then the outer loop would run 5, or `n` times, and the inner loop would run 0 times, then once, then twice, then three times, etc, until it has run 5 times. Since the inner loop will still eventually be O(n), the overall time complexity of this function is O(n^2). The space complexity is the same as the above function, O(1), for the same reasons as stated above. 
 
 3. 
 ```javascript
@@ -227,6 +227,6 @@ class Array
 end
 ```
 
-The time complexity of this method is dependent on the size of the array it is called on. It makes a recursive call, then concatenates the results of mapping over the variable `bag`. I'm not sure about this one, or how to explain what I'm thinking in a coherent way, but I think this is O(n^2), since in the recursive call, it will continue to call itselt recursively, then will iterate over the new array `bag` in each recursive call. As for space complexity, I think it will be O(n), since each recursive call assigns the variable `bag`, and the size is going to be dependend on the size of the array it's called on, but there is also another array created and returned in each `.map` call. 
+The time complexity of this method is dependent on the size of the array it is called on. It makes a recursive call, then concatenates the results of mapping over the variable `bag`. I'm not sure about this one, or how to explain what I'm thinking in a coherent way, but I think this is O(n^2), since in the recursive call, it will continue to call itself recursively, then will iterate over the new array `bag` in each recursive call. As for space complexity, I think it will be O(n), since each recursive call assigns the variable `bag`, and the size is going to be dependent on the size of the array it's called on, but there is also another array created and returned in each `.map` call. 
  
  
