@@ -1,10 +1,13 @@
 # Time Complexity Practice
 
+### Let's start with some array manipulation to get us warmed up. Find the time complexity of each of the following functions (in order -- they depend on each other). You may assume that all arrays are arrays of integers, for convenience. When you evaluate time complexity, remember to do each of the following:
+
 1. Specify which aspect (or aspects) of the input the time complexity depends on. E.g., if a function is O(n), what is n?
 2. Explain thoroughly and clearly why the time complexity is what it is.
 3. Find the worst cases.
 4. Discuss space complexity too: this is usually deemphasized over time complexity, but some interviewers will ask about it.
 
+* Notes are taken to show my thinking--some may start out stating one thing, but will change if I come to another conclusion.
 --- 
 
 1. ```ruby 
@@ -16,4 +19,51 @@ def add(a, b)
   a - b
 end
 ```
-* 
+* Since the method simply compares the numbers and performs an operation, the time complexity for this adding method is linear (O(1)). The best and worst case scenarios are the same for this method since it will be the same regardless of the input. Time complexity for this method is also O(1), since no additional variables are assigned in evaluating the method.
+
+2. ``` ruby 
+def print_arr_1(arr)
+  arr.each do |idx|
+    puts el
+  end
+end
+```
+* The time complexity for this method also depends on the input, but it is dependent on the size of the input. The time complexity of this method is O(n), where `n` is the size of the array. This method won't print anything to the screen, since Ruby's .each creates a local variable, named here `idx`, which is never used in the block. This method would throw an error, since `el` is not defined. Since this method will never actually run, it will be O(1), since it will always throw an error on the first iteration. This means that, since it is linear, it is not dependent on the size of the input. O(1) -- Final answer. The space complexity for this would also be O(1), since only one variable is created, `idx`. 
+
+3. ```ruby 
+def print_arr_2(arr)
+  arr.each_with_index do |el, idx|
+    break if idx == arr.length/2 - 1
+    puts el
+  end
+end
+```
+* Even though this method will only iterate over and print only half the array, it still has O(n) time complexity, since arr.length/2 - 1 evaluates to n/2 - 1, with `n` being the size of the array. Since the integers are constant, we ignore those with asymptotic notation. The `puts` statement also runs in constant time, so this we can ignore, since this would give us n/2 + 1 for our overall run time. The space complexity of this method is O(1), since only two variables are created, `el` and `idx`, and are reassigned each iteration. 
+
+4. ```ruby 
+def print_arr_3(arr)
+  arr.each do |el|
+    break if el == arr.length/2 - 1
+    puts el
+  end
+end
+```
+
+* The time complexity for this method is dependent on the size of the array, as well as the integers themselves. In the best case scenario, if the first element in the array is equivalent to n/2 - 1, the time complexity would be O(1), but at it's worst, would be O(n), since the element that would break the method could either be the last element in the array, or could not be present at all. Since we are only concerning ourselves with the worst case performance, it is O(n). The space complexity for this is also linear since only one local variable, `el`, is assigned for this method. 
+
+5. ```ruby 
+def print_arr_4(arr)
+  arr.each do |el|
+    break if el == arr.length/2 - 1
+    puts el
+  end
+
+  arr.each_with_index do |el, idx|
+    puts el if idx % 3 == 0
+  end
+
+  puts arr.last
+end
+```
+
+* This method 
